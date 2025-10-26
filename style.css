@@ -75,7 +75,7 @@ html, body{
     padding:5px;
     position:relative;
     cursor:pointer;
-    animation: to-top 1s forward;
+    animation: to-top 1s forwards;
 }
 .month-picker{
     padding:5px 10px;
@@ -166,13 +166,14 @@ html, body{
 }
 .month-list.hideonce{
     visibility:hidden;
-
+ 
 }
 .month-list.hide{
     animation: to-right 1s forwards;
     visibility:none;
     pointer-events:none;
 }
+
 .date-time-format{
     width:max-content;
     height:max-content;
@@ -181,11 +182,107 @@ html, body{
     top:140px;
     justify-content: center;
 }
-.date-text-format{
+.date-text-format{ 
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:1.4rem;
+    padding-right:5%;
+    border-right:5px solid pink;
+    position:absolute;
+    left: -1rem;
+}
+.date-time-value{
+    display: block;
+    height: max-content;
+    width: max-content;
+    position: relative;
+    left: 40%;
+    top:-18px;
+    text-align:center;
+}
+.time-format{
+    font-size: 1.5rem;
+}
+.time-format.hideTime{
+    animation: hidetime 1.5s forwards;
+}
+.day-text-format-hidetime{
+    animation: hidetime 1.5s forwards;
+}
+.date-format.hideTime{
+    animation: hideTime 1.5s forwards;
+}
+.day-text-format-hidetime{
+    animation: showtime 1s forwards;
+
+}
+.day-text-format.showtime{
+    animation: showtime 1s forwards;
+}
+.time-format.showtime{
+    animation:showtime 1s forwards;
+
+}
+.date-format.showtime{
+    animation: showtime 1s forwards;
 }
 .calendar-footer {
     height: 0;
     padding: 0;
 }
             
+@keyframes to-top {
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+    100%{
+        transform:translateY(100%);  
+        opacity: 1;
+    }
+}
+ @keyframes to-left {
+    0% {
+      transform: translatex(230%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+  }
+  @keyframes to-right {
+    10% {
+      transform: translatex(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(-150%);
+      opacity: 1;
+    }
+  }
+  @keyframes showtime {
+    0% {
+      transform: translatex(250%);
+      opacity: 1;
+    }
+    100% {
+      transform: translatex(0%);
+      opacity:1;
+    }
+  }
+  @keyframes hidetime {
+    0% {
+      transform: translatex(0%);
+      opacity:1;
+    }
+    100% {
+      transform: translatex(-370%);
+      opacity: 1;
+    }
+  }
+  @media (max-width:375px) {
+    .month-list>div{
+  
+      margin: 5px 0px;
+    }
+  }                  
