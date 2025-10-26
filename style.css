@@ -15,19 +15,124 @@ html, body{
     height:max-content;
     position: relative; 
     display: flex;
-    padding: 50% 0px 0px 0px;
     justify-content:center;
     right:0%;
     width:100%;
     height:100%;  
     overflow: hidden;
 }   
-.calendar{   
+.calendar{    
     height:610px;
-    width:max-content;
+    width:max-content;     
     background-color: #E3E4FA;
     border-radius: 25px;
     padding:20px;
     overflow: hidden;
     padding: 50px 50px 0px 50px;
+    box-shadow: var(--shadow);
+}
+.calendar-header{
+    background: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight:700;
+    color:rgb(240, 56, 56);
+    padding:10px;
+}
+.calendar-body{
+    padding:10px;
+
+}
+.calendar-week-days{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    font-weight:600;
+    cursor:pointer;
+    top:100px;
+    color: rgb(222, 87, 87);
+}   
+.calendar-week-days div:hover{
+    color:black;
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
+
+}
+.calendar-week-day div{
+    display: grid;
+    place-items:center;
+    height:50px;
+}
+.calendar-days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:2px;
+}
+.calendar-days div{
+    width:17px;
+    height:35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:5px;
+    position:relative;
+    cursor:pointer;
+    animation: to-top 1s forward;
+}
+.month-picker{
+    padding:5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.month-picker:hover{
+    background-color: #5615a5;
+}
+.month-picker:hover{
+    color:aqua;
+} 
+.year-picker{
+    display:flex;
+    align-items:center;
+
+}
+.year-change{
+    height:20px;
+    width:30px;
+    border-radius: 50%;
+    display:grid;
+    place-items:center;
+    margin: 0px 10px;
+    cursor:pointer; 
+}
+.year-change:hover{
+    background-color: aqua;
+    transition: all .2s ease-in-out;
+    transform:scale(1.12);
+}
+.year-change:hover pre{
+    color:bisque;
+}  
+.calendar-footer{
+    padding:10px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+#year:hover{
+    cursor:pointer;
+    transform:scale(1.2);
+    transition: all 0.2s ease-in-out;
+}
+.calendar-days div span{
+    position:absolute;
+}
+.calendar-days div:hover{
+    transition:width 0.2s ease-in-out, height 0.2s ease-in-out;
+    background-color:#d39ede;
+    border-radius: 20%;
+    color:#5615a5;
+
+}
+.month-list{
+    position:relative;
 }
