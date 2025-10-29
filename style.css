@@ -1,5 +1,18 @@
-/*css code for planner*/
-
+/*css code for planner
+import/define colors?*/
+:root {
+    --dark-text: #f8fbff;
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #f0f0f0;
+    --light-text: #151426;
+    --light-btn: #9796f0;
+    --blue: #0000ff;
+    --white: #fff;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --font-family: consolas;
+  }
 *{
     padding:0;
     margin:0;
@@ -7,29 +20,33 @@
 }
 html, body{
     place-items:center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: var(--font-family);
     background:linear-gradient(to right,#d39ede, #d5bbf4 );
+    overflow:hidden;
 }  
 .container{
+    width:max-content;
+    height:max-content;  
     position: relative; 
     display: flex;
+    padding: 2% 0px 0px 0px;
     justify-content:center;
+    top:10%;
+    right:0%;
     align-items: center;
     width:100%;
-    height:100%;  
-    overflow: hidden;
+    height:100%;
 }   
 .calendar{    
     height:610px;
-    width:420px;     
+    width:max-content;     
     background-color: #E3E4FA;
-    border-radius: 20px;
-    padding:20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    border-radius: 25px;
+    overflow: hidden;
+    padding:30px 50px 0px 50px;
+    box-shadow: var(--shadow);
 }
+
 .calendar-header{
     background: rgb(0, 0, 0);
     display: flex;
@@ -40,7 +57,7 @@ html, body{
     padding:10px;
 }
 .calendar-body{
-    padding:10px;
+    pad:10px;
 
 }
 .calendar-week-days{
@@ -48,7 +65,6 @@ html, body{
     grid-template-columns: repeat(7,1fr);
     font-weight:600;
     cursor:pointer;
-    top:100px;
     color: rgb(222, 87, 87);
 }   
 .calendar-week-days div:hover{
@@ -60,19 +76,22 @@ html, body{
 .calendar-week-day div{
     display: grid;
     place-items:center;
+    color:var(--bg--second);
     height:50px;
 }
 .calendar-days{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap:2px;
+    color:var(--color-txt);
 }
 .calendar-days div{
-    width:40px;
-    height:40px;
+    width:37px;
+    height:33px;
     display:flex;
     align-items:center;
     justify-content:center;
+    padding: 5px;
     position:relative;
     cursor:pointer;
     animation: to-top 1s forwards;
@@ -83,10 +102,10 @@ html, body{
     cursor: pointer;
 }
 .month-picker:hover{
-    background-color: #5615a5;
+    background-color: var(--color-hover);
 }
 .month-picker:hover{
-    color:aqua;
+    color:var(--color-txt);
 } 
 .year-picker{
     display:flex;
@@ -94,7 +113,7 @@ html, body{
 
 }
 .year-change{
-    height:20px;
+    height:30px;
     width:30px;
     border-radius: 50%;
     display:grid; 
@@ -103,12 +122,12 @@ html, body{
     cursor:pointer; 
 }
 .year-change:hover{
-    background-color: aqua;
+    background-color: var(--light-btn);
     transition: all .2s ease-in-out;
     transform:scale(1.12);
 }
 .year-change:hover pre{
-    color:bisque;
+    color:var(--bg-body);
 }  
 .calendar-footer{
     padding:10px;
@@ -128,8 +147,13 @@ html, body{
     transition:width 0.2s ease-in-out, height 0.2s ease-in-out;
     background-color:#d39ede;
     border-radius: 20%;
-    color:#5615a5;
+    color:var(--dark-text);
 
+}
+.calendar-days dev.current-date{
+    color:var(--dark-text);
+    background-color: var(--light-btn);
+    border-radius: 20%;
 }
 .month-list{
     position:relative;
@@ -154,7 +178,8 @@ html, body{
                 
 }
 .month-list>div>div:hover{
-    background-color:#d39ede;
+    background-color:var(--light-btn);
+    color:var(--dark-text);
     transform:scale(0.9) ;
     transition: all 0.2s ease-in-out;
 }
@@ -174,7 +199,7 @@ html, body{
     pointer-events:none;
 }
 
-.date-time-format{
+.date-time-formate{
     width:max-content;
     height:max-content;
     font-family: Dubai Light, Century Gothic;
@@ -182,11 +207,11 @@ html, body{
     top:140px;
     justify-content: center;
 }
-.date-text-format{ 
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.date-text-formate{ 
+    font-family: Microsoft JhengHei UI;
     font-size:1.4rem;
     padding-right:5%;
-    border-right:5px solid pink;
+    border-right:3px solid pink;
     position:absolute;
     left: -1rem;
 }
@@ -199,35 +224,28 @@ html, body{
     top:-18px;
     text-align:center;
 }
-.time-format{
+.time-formate{
     font-size: 1.5rem;
 }
-.time-format.hideTime{
+.time-formate.hideTime{
     animation: hidetime 1.5s forwards;
 }
-.day-text-format-hidetime{
+.day-text-formate-hidetime{
     animation: hidetime 1.5s forwards;
 }
-.date-format.hideTime{
+.date-formate.hideTime{
     animation: hideTime 1.5s forwards;
 }
-.day-text-format-hidetime{
-    animation: showtime 1s forwards;
 
-}
-.day-text-format.showtime{
+.day-text-formate.showtime{
     animation: showtime 1s forwards;
 }
-.time-format.showtime{
+.time-formate.showtime{
     animation:showtime 1s forwards;
 
 }
-.date-format.showtime{
+.date-formate.showtime{
     animation: showtime 1s forwards;
-}
-.calendar-footer {
-    height: 0;
-    padding: 0;
 }
             
 @keyframes to-top {
