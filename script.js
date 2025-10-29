@@ -24,6 +24,7 @@ const month_names=[
     'November',
     'December',
 ];   
+/*relationships*/
 let month_picker= document.querySelector('#month-picker');
 const dayTextFormat= document.querySelector('.day-text-format');
 const timeFormat=document.querySelector('.time-format');
@@ -80,7 +81,7 @@ const dateFormat=document.querySelector('.date-format');
 
  };  
  let month_list=calendar.querySelector('.month-list');
- month_names.forEach((e,index))=>{
+ month_names.forEach((e,index) => {
     let month=document.createElement('div');
     month.innerHTML=`<div>${e}</div>`;
 
@@ -96,4 +97,59 @@ const dateFormat=document.querySelector('.date-format');
         dateFormat.classList.remove('hideTime');
         dateFormat.classList.add('showtime');
     }
- };
+ });
+ /*hiding months list when site is opened*/
+(function (){
+    month_list.classList.add('hideonce');
+})(); 
+
+/*when prev button clicked, decreases year*/
+document.querySelector('#pre-year').onclick=()=>{
+    --currentYear.value;
+    generateCalendar(currentMonth.value, currentYear.value);
+};
+/*opposite of above*/
+document.querySelector('#next-year').onclick=()=>{
+    ++currentYear.value;
+    generateCalendar(currentMonth.value, currentYear.value);
+}
+
+let currentDate=new Date();
+let currentMonth={value:currentDate.getMonth()};
+let currentYear={value:currentDate.getFullYear()};
+generateCalendar(currentMonth.value, currentYear.value);
+
+  const todayShowTime=document.querySelector('.time-format');
+  const todayShowDate=document.querySelector('.date-format');
+
+  const currshowDate=new Date();
+  const showCurrentDateOption={
+    year:'numeric',
+    month:'long',
+    day: 'numeric',   
+    weekday:'long',
+  };
+  const currentDateFormat=new Intl.DateTimeFormat(
+    'en-US',
+    showCurrentDateOption
+  ).format(currshowDate);
+
+  todayShowDate.textContent=currentDateFormat;
+
+  setInterval(()=>{
+    const timer= new Date();
+    const option={
+        hour:'numeric',
+        minute:'numeric',
+        second:'numeric',
+    };
+    const formatTimer=new Intl.DateTimeFormat('en-us', option).format(timer);
+    let time = `${`${timer.getHours()}`.padStart(
+    2,
+    '0'
+  )}:${`${timer.getMinutes()}`.padStart(
+    2,
+    '0'
+  )}: ${`${timer.getSeconds()}`.padStart(2, '0')}`;
+  todayShowTime.textContent = formatTimer;
+}, 1000);      
