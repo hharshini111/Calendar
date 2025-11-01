@@ -6,10 +6,12 @@
         <title>CALENDAR</title>
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
+
+    
     </head>
     <body>
-        <div class="contianer">
-            <div class="calendar">
+        <div class="container">
+            <div class="calendar"> 
                 <div class="calendar-header"> 
                     <span class="month-picker" id="month-picker">May</span>
                     <div class="year-picker" id="year-picker">
@@ -38,13 +40,13 @@
                             <div>Thu</div>
                             <div>Fri</div>
                             <div>Sat</div>
-                        </div>
+                        </div> 
                         <div class="calendar-days">
                         </div>   
                     </div>
 
                     <div class="calendar-footer">
-
+ 
                     </div>
                     <div class="date-time-formate">
                         <div class="day-text-formate">Today</div>
@@ -55,7 +57,11 @@
                     </div>     
                     <div class="month-list"></div>       
                 </div>
-            </div>
-        </div>
-    </body>
+                <div class="content">
+                    <h2>To-Do List</h2>
+                    <ul id="todo-list"></ul>
+                    <input type="text" id="todo-input" placeholder="task here..."/>
+                    <button id="add-btn">Add</button>
+                </div>
+            </body>
 </html> 

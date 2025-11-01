@@ -1,3 +1,4 @@
+
 const isLeapYear = (year) => {
     return (
       (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
@@ -154,3 +155,29 @@ const isLeapYear = (year) => {
     todayShowTime.textContent = formateTimer;
   }, 1000);
   
+  const addBtn = document.getElementById("add-btn");
+  const todoInput=document.getElementById("todo-input");
+  const todoList=document.getElementById("todo-list");
+
+addBtn.addEventListener("click", () => {
+  const task = todoInput.value.trim();
+  if (task !== "") {
+    const li = document.createElement("li");
+    li.textContent = task;
+    li.addEventListener("click", () => {
+      li.classList.toggle("done");
+    });
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "✕";
+    delBtn.style.border = "none";
+    delBtn.style.background = "transparent";
+    delBtn.style.cursor = "pointer";
+    delBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      li.remove();
+    });
+    li.appendChild(delBtn);
+    todoList.appendChild(li);
+    todoInput.value = "";
+  }
+});
